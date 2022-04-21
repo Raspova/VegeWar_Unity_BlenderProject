@@ -1,6 +1,6 @@
-#Intro 
+# Vege War 
 
-###Wellcome to the Vege world ! 
+### Wellcome to the Vege world ! 
 
 Whit it's procedural envirement
 
