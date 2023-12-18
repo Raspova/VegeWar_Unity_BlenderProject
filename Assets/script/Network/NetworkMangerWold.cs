@@ -9,9 +9,10 @@ public class NetworkMangerWold : NetworkManager
  
     IntanciateWorld intanciateWorld ;
     [SerializeField]   int nbrOfPlayer = 2;
-    int []randVal;
+    private NetworkVariable <int []> randVal = new NetworkVariable<int[]>(writePerm: NetworkVariableWritePermission.Server);    
+    private NetworkVariable <string> test;
     void Start()
-    {   
+    {  
         OnServerStarted += HandleServerStarted;
         OnClientConnectedCallback += HandleClientConnected;
 
@@ -27,22 +28,19 @@ public class NetworkMangerWold : NetworkManager
     // This method is called on the server when it is started
     private void HandleServerStarted()
     {
-        randVal = intanciateWorld.generateRandVal();
-        intanciateWorld.instantiateWorld(randVal);
+        //randVal.Value = intanciateWorld.generateRandVal();
+        if (!NetworkManager.Singleton.IsServer)
+            return;
+        test = new NetworkVariable<string>(writePerm: NetworkVariableWritePermission.Server);
+        test.Value = "test";
+        //intanciateWorld.instantiateWorld(randVal.Value);
     }
 
     private void HandleClientConnected(ulong clientId)
     {
-        if (NetworkManager.Singleton.IsServer)
-         ;
-       // intanciateWorld.instantiateWorld(randVal);
+        //intanciateWorld.instantiateWorld(randVal.Value);
     }
 
     
-    [ClientRpc]
-    private void ReceiveRandomValues(int[] receivedRandVal)
-    {
-        randVal = receivedRandVal;
-        intanciateWorld.instantiateWorld(randVal);
-    }
+    
 }
