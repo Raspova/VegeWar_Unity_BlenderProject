@@ -67,8 +67,24 @@ public class IntanciateWorld : MonoBehaviour
     //[SerializeField] private Material grassM5;
 
 
-    
-    void Start()
+    int[] randVal = new int[Worldsize * Worldsize];
+
+    public int []generateRandVal()
+    {
+        int i = 0;
+        while (i < Worldsize * Worldsize) {
+            randVal[i] = Random.Range(0, max_d);
+            i++;
+        }
+        return randVal;
+    }
+
+    public int []getRandVal()
+    {
+        return randVal;
+    }
+
+    public void instantiateWorld(int[] randValue)
     {
         Vector3 v = new Vector3(0, 0, 0);
         float rand;
@@ -86,7 +102,7 @@ public class IntanciateWorld : MonoBehaviour
                 buffFloor = Instantiate(floor,v ,Quaternion.identity);
                 buffFloor.transform.GetChild(0).GetComponent<MeshRenderer>().material = buffM[Random.Range(0, buffM.Length - 1)];
                 //
-                rand = Random.Range(0, max_d);
+                rand = randValue[x + (z * Worldsize)];
                 ret = 0;
                 for (int i = 0; i < nbrOfAsset; i++) {
                     if (rand >=  ret && rand <= (d[i + 1] + ret)) {
@@ -97,7 +113,20 @@ public class IntanciateWorld : MonoBehaviour
                     ret += d[i];
                 }
             }
-        gameObject.GetComponent<NavMeshSurface>().BuildNavMesh();
+        var navMeshSurface = gameObject.AddComponent<NavMeshSurface>();
+        string layerToIgnore = "NonBlockantPath";
+        int layerToIgnoreMask = 1 << LayerMask.NameToLayer(layerToIgnore);
+        
+        if (navMeshSurface != null)
+        {
+            navMeshSurface.layerMask = ~layerToIgnoreMask; // Use ~ to invert the mask (exclude the specified layer)
+            navMeshSurface.BuildNavMesh();
+        }
+        else
+        {
+            Debug.LogError("NavMeshSurface component is not attached to the gameObject.");
+        }
+
 //        Lightmapping.Bake();
     }
 

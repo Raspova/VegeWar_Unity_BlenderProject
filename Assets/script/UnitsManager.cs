@@ -5,7 +5,7 @@ using UnityEngine;
     CREATE OWN AVATAR, SET ANiMATION LOOP
     ADD TO UNIT TAG/LAYER TO THE PREFAB
     set animator in prefab 
-    PUT HEALBAR AT THE TOP OF THE HIEARKI
+    PUT HEALBAR AT THE TOP OF THE HIERARCHY
 */
 
 public class UnitsManager : MonoBehaviour
@@ -38,8 +38,8 @@ public class UnitsManager : MonoBehaviour
         UnitLayer = LayerMask.GetMask("Units");
         FloorLayer = LayerMask.GetMask("Floor");
     
-        initNUnits(AvocadoUnit, nAvocado, new Vector3(1,1,1), 0);
-        initNUnits(KakaRotoUnit, nKakarot, new Vector3(35,1,35), 1);
+        //initNUnits(AvocadoUnit, nAvocado, new Vector3(1,1,1), 0);
+        //initNUnits(KakaRotoUnit, nKakarot, new Vector3(35,1,35), 1);
         
         DrawSelectionBox();
 

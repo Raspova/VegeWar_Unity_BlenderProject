@@ -33,6 +33,13 @@ public class CamControler : MonoBehaviour
         }
             
     }
+
+    
+    bool IsMouseWithinWindow()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        return mousePos.x >= -10 && mousePos.x <= (Screen.width + 10) && mousePos.y >= -10 && mousePos.y <= Screen.height + 10;
+    }
     void LateUpdate()
     {
         Vector3 pos = transform.position;
@@ -56,6 +63,8 @@ public class CamControler : MonoBehaviour
         float mody = Input.GetAxis("Mouse ScrollWheel") * speed * -300;
         //Vector3 newPos;
 
+         if (!IsMouseWithinWindow())
+                return;
         if (!Input.GetKey(KeyCode.Mouse2))
         {
             if (modz == 0)

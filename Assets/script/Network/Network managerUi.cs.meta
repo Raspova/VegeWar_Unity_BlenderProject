@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: e7d2a835b95a19143b0777bf9acab4db
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - severButton: {fileID: 7374945148277873711, guid: 1d40652306d4513428e673a5f3bc402d,
+      type: 3}
+  - clientButton: {fileID: 2313301432326572054, guid: 72431f5ed43de1441a21a43968e95767,
+      type: 3}
+  - hostButton: {fileID: 2540747016598501516, guid: ff9bb888633f4dc49a99ad59cb46480b,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
