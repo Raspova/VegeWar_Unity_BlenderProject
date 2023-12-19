@@ -167,8 +167,8 @@ public class UnitsManagerNet : MonoBehaviour
 
     void addSelectedUnit(PlayerRtsNet p)
     {
-        if (!p.IsOwner)
-            return;  
+        //if (!p.IsOwner)
+        //    return;  
         p.changeSelect();
         selectUnits.Add(p);
 

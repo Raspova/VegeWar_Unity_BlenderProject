@@ -84,6 +84,7 @@ public class IntanciateWorld : MonoBehaviour
         return randVal;
     }
 
+
     public void instantiateWorld(int[] randValue)
     {
         Vector3 v = new Vector3(0, 0, 0);

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
 using static PlayerRtsNet.state_t;    
+//using Unity.Netcode;
 
 
-public class PlayerRtsNet : NetworkBehaviour
+public class PlayerRtsNet : MonoBehaviour
 {
 // STATS
     [SerializeField] private int _totalHealth;
@@ -40,7 +40,7 @@ public class PlayerRtsNet : NetworkBehaviour
         ALERT,
         ATTAKING,
     };
-    
+
     [HideInInspector]
     public PlayerRtsNet target;
     public state_t state  {get; set;}
@@ -53,7 +53,7 @@ public class PlayerRtsNet : NetworkBehaviour
 
     public Vector3 myDestinationPos;
     float timerAttack = 0f;
-    //public int ID;
+    //public int ID;    
     void Start()
     {
         UnitLayer = LayerMask.GetMask("Units");
@@ -208,6 +208,6 @@ public class PlayerRtsNet : NetworkBehaviour
         if (UnitsManagerNet.selectUnits.Contains(this))
             UnitsManagerNet.selectUnits.Remove(this);
     }
-    
+
 }
 

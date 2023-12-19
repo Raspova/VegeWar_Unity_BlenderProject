@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine;/*
 using Unity.Netcode;
 
 public class NetworkMangerWold : NetworkManager
@@ -45,3 +45,4 @@ public class NetworkMangerWold : NetworkManager
     
     
 }
+*/
