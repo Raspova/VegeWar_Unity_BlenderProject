@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -68,6 +69,7 @@ public class IntanciateWorld : MonoBehaviour
 
 
     int[] randVal = new int[Worldsize * Worldsize];
+    GameObject[] Level = new GameObject[] {};
 
     public int []generateRandVal()
     {
@@ -95,6 +97,7 @@ public class IntanciateWorld : MonoBehaviour
         Material[] buffM = {grassM0, grassM1, grassM2, grassM3, grassM4};
         int ret;
         GameObject buffFloor;
+         GameObject buffG;
         //Light light;
         // check if densiti is > 100;
         for(int z = 0; z < Worldsize; z++)
@@ -102,13 +105,14 @@ public class IntanciateWorld : MonoBehaviour
                 v.Set(x, 0, z);
                 buffFloor = Instantiate(floor,v ,Quaternion.identity);
                 buffFloor.transform.GetChild(0).GetComponent<MeshRenderer>().material = buffM[Random.Range(0, buffM.Length - 1)];
-                //
+                buffFloor.tag = "Level";
                 rand = randValue[x + (z * Worldsize)];
                 ret = 0;
                 for (int i = 0; i < nbrOfAsset; i++) {
                     if (rand >=  ret && rand <= (d[i + 1] + ret)) {
                         v.Set(x, 0.5f, z);
-                        Instantiate(buff[i], v ,Quaternion.identity);
+                        buffG = Instantiate(buff[i], v ,Quaternion.identity);
+                        buffG.tag = "Level";
                         break; // NOT NESSERARY BUT OPTI
                     }
                     ret += d[i];
@@ -129,6 +133,18 @@ public class IntanciateWorld : MonoBehaviour
         }
 
 //        Lightmapping.Bake();
+    }
+
+    public void destroyWorld()
+    {
+        Debug.Log("Destroying world" + Level.Length);
+        // get all object with tag "Level"
+        Level = GameObject.FindGameObjectsWithTag("Level");
+        Debug.Log("Destroying world" + Level.Length);
+        foreach (GameObject obj in Level)
+        {
+            Destroy(obj);
+        }
     }
 
 }

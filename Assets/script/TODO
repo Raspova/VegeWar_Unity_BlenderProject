@@ -1,2 +1,16 @@
 No new unfree less new possible;
 Liberer Le repo
+
+
+// prompt
+
+First Time using mirror, i'm making an RTS, 
+Fisrt step whould be to generate the same map for all clients,
+So, in my custom NetworkManager ()
+im generating a list of random int on the server start,
+"randValue = intanciateWorld.generateRandVal();"
+I would like to send this list to all client when they connect to the server,
+OnServerConnect run on the server when a client connect,
+so send the list i tried using a seperate NetworkBehaviour class whit a [ClientRpc] ,
+but i asume there a way to sync the list from the NetworkManager, please help thanx.
+I just need too sync a list of int from the server to all client when they connect.

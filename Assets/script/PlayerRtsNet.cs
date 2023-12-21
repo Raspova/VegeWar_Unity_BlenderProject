@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static PlayerRtsNet.state_t;    
-//using Unity.Netcode;
+using Mirror;
 
 
-public class PlayerRtsNet : MonoBehaviour
+public class PlayerRtsNet : NetworkBehaviour
 {
 // STATS
     [SerializeField] private int _totalHealth;

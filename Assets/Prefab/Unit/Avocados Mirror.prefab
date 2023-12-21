@@ -139,6 +139,11 @@ PrefabInstance:
       objectReference: {fileID: 8037673209119733203}
     - target: {fileID: 6502083881304851398, guid: 9bb777d50754ec24bb3a0acd9d17b39c,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502083881304851398, guid: 9bb777d50754ec24bb3a0acd9d17b39c,
+        type: 3}
       propertyPath: _viewRange
       value: 10
       objectReference: {fileID: 0}
@@ -272,12 +277,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9086560468325808960, guid: 9bb777d50754ec24bb3a0acd9d17b39c,
         type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 1805307609895214315}
     - targetCorrespondingSourceObject: {fileID: 9086560468325808960, guid: 9bb777d50754ec24bb3a0acd9d17b39c,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3756080572775373913}
+    - targetCorrespondingSourceObject: {fileID: 9086560468325808960, guid: 9bb777d50754ec24bb3a0acd9d17b39c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3912942737815056909}
   m_SourcePrefab: {fileID: 100100000, guid: 9bb777d50754ec24bb3a0acd9d17b39c, type: 3}
 --- !u!4 &2151226690787208678 stripped
 Transform:
@@ -321,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
+  syncDirection: 1
   syncMode: 0
   syncInterval: 0
   target: {fileID: 2151226690787208678}
@@ -330,7 +339,7 @@ MonoBehaviour:
   syncScale: 0
   interpolatePosition: 1
   interpolateRotation: 1
-  interpolateScale: 1
+  interpolateScale: 0
   coordinateSpace: 0
   sendIntervalMultiplier: 1
   timelineOffset: 0
@@ -343,6 +352,32 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &3912942737815056909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151226690787208679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cc4acbf5efc2d40a4d4a73150ae0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  _totalHealth: 200
+  _attack: 20
+  _attack_time: 1
+  _viewRange: 10
+  _detectionRange: 7
+  _range: 1.5
+  target: {fileID: 0}
+  healthBar: {fileID: 8037673209119733203}
+  healthBarGui: {fileID: 7438381193401594821}
+  myDestinationPos: {x: 0, y: 0, z: 0}
+  _enemyInView: []
 --- !u!1 &7438381193401594821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 358374358243779938, guid: 9bb777d50754ec24bb3a0acd9d17b39c,

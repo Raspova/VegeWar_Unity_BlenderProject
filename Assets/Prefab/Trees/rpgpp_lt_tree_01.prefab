@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33222949445572694}
   - component: {fileID: 23050206849376476}
   - component: {fileID: 5419844361373591118}
-  - component: {fileID: -288901283297718285}
   m_Layer: 0
   m_Name: rpgpp_lt_tree_01
   m_TagString: Untagged
@@ -108,23 +107,3 @@ CapsuleCollider:
   m_Height: 5.63
   m_Direction: 1
   m_Center: {x: 0.02, y: 3, z: -0.58}
---- !u!114 &-288901283297718285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612273161005096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1834853417
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
