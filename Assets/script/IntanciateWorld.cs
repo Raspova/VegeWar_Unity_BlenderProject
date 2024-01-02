@@ -85,7 +85,7 @@ public class IntanciateWorld : MonoBehaviour
     {
         return randVal;
     }
-
+     [SerializeField] private GameObject level;
 
     public void instantiateWorld(int[] randValue)
     {
@@ -97,7 +97,8 @@ public class IntanciateWorld : MonoBehaviour
         Material[] buffM = {grassM0, grassM1, grassM2, grassM3, grassM4};
         int ret;
         GameObject buffFloor;
-         GameObject buffG;
+        GameObject buffG;
+       
         //Light light;
         // check if densiti is > 100;
         for(int z = 0; z < Worldsize; z++)
@@ -106,12 +107,14 @@ public class IntanciateWorld : MonoBehaviour
                 buffFloor = Instantiate(floor,v ,Quaternion.identity);
                 buffFloor.transform.GetChild(0).GetComponent<MeshRenderer>().material = buffM[Random.Range(0, buffM.Length - 1)];
                 buffFloor.tag = "Level";
+                buffFloor.transform.parent = level.transform;
                 rand = randValue[x + (z * Worldsize)];
                 ret = 0;
                 for (int i = 0; i < nbrOfAsset; i++) {
                     if (rand >=  ret && rand <= (d[i + 1] + ret)) {
                         v.Set(x, 0.5f, z);
                         buffG = Instantiate(buff[i], v ,Quaternion.identity);
+                        buffG.transform.parent = level.transform;
                         buffG.tag = "Level";
                         break; // NOT NESSERARY BUT OPTI
                     }

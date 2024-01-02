@@ -2,58 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-public class NetWorkManagerMirror :  Mirror.NetworkManager
+public class NetWorkManagerMirror : NetworkManager
 {
-    // Start is called before the first frame update
+    [SerializeField] private GameObject workerPrefab;
+    public override void OnServerAddPlayer(NetworkConnectionToClient conn)
+    {
+        base.OnServerAddPlayer(conn);
+        GameObject worker = null;
 
-    int[] randValue;
-    [SerializeField]
-    private MyClientBehaviour clientBehaviour;
-    //IntanciateWorld intanciateWorld ;
-    public override void Start()
-    {
-        base.Start();
-        //clientBehaviour = FindObjectOfType<MyClientBehaviour>();
-   //     intanciateWorld = FindObjectOfType<IntanciateWorld>();
-//
-//        if (intanciateWorld == null)
-//        {
-//            Debug.LogError("IntanciateWorld component not found in the scene.");
-//        }
-//        if (clientBehaviour == null)
-//        {
-//            Debug.LogError("MyClientBehaviour component not found in the scene.");
-//        }
+        for (int i = 0; i < 3; i++) {
+            if (numPlayers == 1)
+                worker = Instantiate(workerPrefab, new Vector3(20 + i , 1 , 20 + i) , Quaternion.identity);
+            else if (numPlayers == 2)
+                worker = Instantiate(workerPrefab, new Vector3(130 + i , 1 , 130 + i) , Quaternion.identity);
+            if (worker != null)
+                NetworkServer.Spawn(worker , conn);
+        }
     }
-
-    public override void OnStartServer()
-    {
-      //  base.OnStartServer();
-      //  randValue = intanciateWorld.generateRandVal();
-      //  clientBehaviour.randvalueSet(randValue);
-    }
-    //public override void OnStartClient()
-    //{
-    //    base.OnStartClient();
-    //    if (randValue == null)
-    //    {
-    //        Debug.LogError("randValue not set");
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("randValue set");
-    //        Debug.Log("Random   " + string.Join(", ", randValue));
-    //    }
-    //    intanciateWorld.instantiateWorld(randValue);
-    //}
-    public override void OnServerConnect(NetworkConnectionToClient conn)
-    {
-      //  base.OnServerConnect(conn);
-      //  Debug.Log("Client connected to server: " + conn.connectionId + (conn));//+
-        //clientBehaviour.printrand();
-        //conn.identity.GetComponent<MyClientBehaviour>().randvalueSet(randValue);
-       
-      
-    }
- 
 }
